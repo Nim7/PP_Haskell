@@ -1,0 +1,13 @@
+-No es un proyecto de Eclipse, porque he usado editor de texto y GHC en shell.
+-Para funcionar espera una carpeta llamada "newsCorpusUTF8" y un archivo "stopwordsUTF8.txt" en la carpeta donde esten los "*.hs".
+-Al usar Linux, tiene por defecto en las carpetas 2 archivos: "." y ".." por eso los borra, aunque no deberia dar problemas en otros entornos.
+-Las funciones pedidas estan hechas en 2 partes para hacerlo ampliable, en una recupera la informacion pedida y en su funcion "show*" lo muestra por pantalla con el formato pedido.
+-Para devolver las "entidades" mi planteamiento es:
+	-Recupero el titulo y el cuerpo.
+	-Hago un split por el '.', y de esas listas borro la cabecera (principio de linea, en la mayoria de los casos no aporta nada), despues le añado un " " al final para juntarlos y que quede un String.
+	-Despues borro las stopWords, y borro las duplicadas.
+	-Por ultimo recupero las palabras que tengan la primera letra en mayuscula.
+-Para devolver los grupos el planteamiento que sigo es:
+	-Por cada noticia busco sus similares, cuando recuperas un grupo, borras las noticias contenidas ahi con la lista de noticias que te pasan inicialmente (asi procesa mas rapido y evita repetidos).
+	-Para ver si son similares recupero el titulo y el cuerpo, y le elimino las mayusculas y stopwords (como en entidades) y voy comparando con el valor 29 (haciendo varias pruebas, deja una "mejor" organizacion)
+	-Lo muestra
